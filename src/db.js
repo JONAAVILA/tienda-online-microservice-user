@@ -12,6 +12,8 @@ const {
   DATABASE_URL
 } = process.env
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const sequelize = new Sequelize(DATABASE_URL, {
   logging: false, 
   native: false, 
