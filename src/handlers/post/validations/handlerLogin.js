@@ -1,4 +1,4 @@
-import { models } from '../../db.js';
+import { models } from '../../../db.js';
 import { schema } from '../../utils/schema.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
