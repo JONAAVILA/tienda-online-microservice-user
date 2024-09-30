@@ -6,9 +6,9 @@ import { limiterCodes,limiterLogin } from './utils/limiter.js';
 
 const server = express();
 const corsOptions = {
-    origin: ['http://localhost:4321', 'https://tienda-online-backend-riqf.onrender.com'], // Agrega los dominios permitidos
-    methods: ['GET', 'POST'], // Agrega los métodos permitidos
-    allowedHeaders: ['Content-Type', 'Authorization'], // Agrega los headers permitidos
+    origin: ['http://localhost:4321', 'https://tienda-online-backend-riqf.onrender.com'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 server.use(morgan("dev"));
