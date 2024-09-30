@@ -11,10 +11,16 @@ const {
   DB_HOST
 } = process.env
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/payture-users`, {
+const sequelize = new Sequelize(process.env.DATABASE_URL {
   logging: false, 
   native: false, 
-})
+  dialectOptions: isProduction ? {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Puedes habilitar esta opción si tu base de datos no tiene certificados SSL verificados
+    }
+  } : {}
+});
 
 // const sequelize = new Sequelize(payture, {
 //   logging: false,
