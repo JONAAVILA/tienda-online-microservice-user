@@ -4,7 +4,13 @@ const checkEmail = async (req,res) =>{
     try {
         const { email } = req.body
         const token = await handlerCheckEmail(email)
-        res.status(200).json(token)
+        res
+         .cookie('access-token',token,{
+            httpOnly:true,
+            secure:process.env.NODE_ENV === 'production',
+            // sameSite:'stric'
+         })
+         .status(200).json(true)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
