@@ -10,7 +10,7 @@ const checkEmail = async (req,res) =>{
             secure:process.env.NODE_ENV === 'production',
             // sameSite:'stric'
          })
-         .status(200).json(true)
+         .send(true)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
