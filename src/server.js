@@ -10,6 +10,7 @@ const corsOptions = {
     origin: ['http://localhost:4321', 'https://tienda-online-backend-riqf.onrender.com'],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials:true
 };
 
 server.use(cookieParser())
