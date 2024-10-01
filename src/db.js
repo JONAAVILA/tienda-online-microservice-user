@@ -20,15 +20,10 @@ const sequelize = new Sequelize(DATABASE_URL, {
   dialectOptions: isProduction ? {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // Puedes habilitar esta opción si tu base de datos no tiene certificados SSL verificados
+      rejectUnauthorized: false,
     }
   } : {}
-});
-
-// const sequelize = new Sequelize(payture, {
-//   logging: false,
-//   native: false,
-// })
+})
 
 const User = userModel(sequelize)
 const Code = codeModel(sequelize)
