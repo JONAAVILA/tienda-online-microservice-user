@@ -9,7 +9,8 @@ const checkEmail = async (req,res) =>{
             httpOnly:true,
             secure:process.env.NODE_ENV === 'production',
             sameSite:'strict',
-            path:'/'
+            path:'/',
+            maxAge: 3600000
             })
         res.status(200).json(token)
     } catch (error) {
