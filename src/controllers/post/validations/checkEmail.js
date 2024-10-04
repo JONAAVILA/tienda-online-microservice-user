@@ -9,7 +9,7 @@ const checkEmail = async (req,res) =>{
             httpOnly:true,
             secure:false,
             sameSite:'lax',
-            path:'/',
+            path:'/validate',
             maxAge: 3600000
             })
         res.status(200).json(token)
