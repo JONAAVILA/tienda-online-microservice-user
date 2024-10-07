@@ -6,16 +6,13 @@ export default (sequelize)=>{
             type:DataTypes.UUID,
             primaryKey:true
         },
-        userName:{
-            type:DataTypes.STRING,
-            unique:true
-        },
         name:{
             type:DataTypes.STRING,
             allowNull:false
         },
         surname:{
             type:DataTypes.STRING,
+            allowNull:false
         },
         image:{
             type:DataTypes.STRING,
@@ -24,18 +21,29 @@ export default (sequelize)=>{
             type:DataTypes.STRING,
             unique:true,
         },
+        phone:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
         password:{
             type:DataTypes.STRING,
             allowNull:false
         },
         address:{
             type:DataTypes.STRING,
+            allowNull:false
+        },
+        number:{
+            type:DataTypes.STRING,
+            allowNull:false
         },
         state:{
             type:DataTypes.STRING,
+            allowNull:false
         },
         country:{
             type:DataTypes.STRING,
+            allowNull:false
         },
         active:{
             type:DataTypes.BOOLEAN,

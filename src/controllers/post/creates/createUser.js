@@ -5,9 +5,7 @@ const createUser = async (req,res)=>{
     try {
         const id = uuidv4()
         const { name,userName,email,password } = req.body
-        const headers = req.headers['authorazation']
-        const token = headers.split(' ')[1]
-        
+        const token = req.cookie['access-token']
         const response = await handleCreateUser(id,name,userName,email,password,token )
         res.status(200).json(response)
     } catch (error) {
