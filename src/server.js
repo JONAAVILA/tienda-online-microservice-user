@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 const server = express();
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://tienda-online-backend-riqf.onrender.com'],
+    origin: ['http://localhost:3000','http://localhost:3001', 'https://tienda-online-backend-riqf.onrender.com'],
     credentials:true,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
