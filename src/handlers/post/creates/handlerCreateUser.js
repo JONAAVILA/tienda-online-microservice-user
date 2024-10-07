@@ -7,7 +7,7 @@ const { User } = models;
 const SALT_ROUNDS = Number(process.env)
 const { SECRET_KEY } = process.env
 
-const handleCreateUser = async (id,name,userName,email,password,token )=>{
+const handleCreateUser = async (id,name,surname,email,password,phone,address,number,location,state,country,token)=>{
     const decode = await jwt.verify(
         token,
         SECRET_KEY
@@ -18,9 +18,15 @@ const handleCreateUser = async (id,name,userName,email,password,token )=>{
     const { error } = schema.validate({
         uuid:id,
         name:name,
-        userName:userName,
+        surname:surname,
         email:email,
-        password:password
+        password:password,
+        phone:phone,
+        address:address,
+        number:number,
+        location:location,
+        state:state,
+        country:country
     })
     if(error) throw new Error('Invalid parameters or are missing')
 
@@ -29,9 +35,15 @@ const handleCreateUser = async (id,name,userName,email,password,token )=>{
     const response = await User.create({
         id:id,
         name:name,
-        userName:userName,
+        surname:surname,
         email:email,
-        password:passwordHashed
+        password:passwordHashed,
+        phone:phone,
+        address:address,
+        number:number,
+        location:location,
+        state:state,
+        country:country
     })
     if(!response) throw new Error('Error to create')
     return 'User created'
