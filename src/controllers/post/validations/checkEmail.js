@@ -10,7 +10,7 @@ const checkEmail = async (req,res) =>{
             secure:false,
             sameSite:'strict',
             path:'/',
-            expires:360000
+            maxAge: 6 * 60 * 1000
             })
         res.status(200).json('access')
     } catch (error) {
