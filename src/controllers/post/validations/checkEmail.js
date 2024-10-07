@@ -9,7 +9,8 @@ const checkEmail = async (req,res) =>{
             httpOnly:true,
             secure:false,
             sameSite:'strict',
-            path:'/'
+            path:'/',
+            expires:360000
             })
         res.status(200).json('access')
     } catch (error) {
