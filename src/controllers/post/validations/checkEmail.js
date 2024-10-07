@@ -8,11 +8,10 @@ const checkEmail = async (req,res) =>{
         res.cookie('access-token',token,{
             httpOnly:true,
             secure:false,
-            sameSite:'lax',
-            path:'/',
-            maxAge: 3600000
+            sameSite:'strict',
+            path:'/'
             })
-        res.status(200).json(token)
+        res.status(200).json(false)
     } catch (error) {
         res.status(400).json({error:error.message})
     }

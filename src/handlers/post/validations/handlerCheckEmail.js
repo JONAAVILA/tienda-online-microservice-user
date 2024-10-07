@@ -22,7 +22,7 @@ const handlerCheckEmail = async (email)=>{
             }
         })
         if(match) throw new Error(false);
-        return true
+        return token
     } catch (error) {
         return false
     }
