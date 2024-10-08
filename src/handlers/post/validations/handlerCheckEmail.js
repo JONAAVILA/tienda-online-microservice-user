@@ -12,8 +12,6 @@ const handlerCheckEmail = async (email)=>{
         })
         if(error) throw new Error(false)
 
-        const token = createJwt(email)
-
         const match = await User.findOne({
             where:{
                 email:{
@@ -21,8 +19,9 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
-
-        if(match) throw new Error(false);
+        console.log(match)
+        if(match != null) throw new Error(false)
+        const token = createJwt(email)
         return token
     } catch (error) {
         return false
