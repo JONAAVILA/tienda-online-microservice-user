@@ -21,7 +21,7 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
-        console.log(token)
+
         if(match) throw new Error(false);
         return token
     } catch (error) {

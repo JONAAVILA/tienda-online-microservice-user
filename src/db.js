@@ -12,6 +12,14 @@ const {
   DATABASE_URL
 } = process.env
 
+// <-- local -->
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/payture-users`, {
+//   logging: false, 
+//   native: false, 
+// })
+// <-- local -->
+
+// <-- produccion -->
 const isProduction = process.env.NODE_ENV === 'production';
 
 const sequelize = new Sequelize(DATABASE_URL, {
@@ -24,6 +32,7 @@ const sequelize = new Sequelize(DATABASE_URL, {
     }
   } : {}
 })
+// <-- produccion -->
 
 const User = userModel(sequelize)
 const Code = codeModel(sequelize)
