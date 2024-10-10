@@ -24,7 +24,7 @@ const handlerCheckEmail = async (email)=>{
         const token = createJwt(email)
         return token
     } catch (error) {
-        return false
+        return error
     }
 }
 

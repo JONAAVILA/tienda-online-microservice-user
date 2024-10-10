@@ -4,6 +4,7 @@ const checkEmail = async (req,res) =>{
     try {
         const { email } = req.body
         const token = await handlerCheckEmail(email)
+
         res.cookie('access-token',token,{
             httpOnly:true,
             secure:false,
@@ -11,7 +12,7 @@ const checkEmail = async (req,res) =>{
             path:'/',
             maxAge: 6 * 60 * 1000
             })
-        res.status(200).json(token)
+        res.status(200).json('access')
     } catch (error) {
         res.status(400).json({error:error.message})
     }
