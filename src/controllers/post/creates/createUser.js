@@ -33,14 +33,14 @@ const createUser = async (req,res)=>{
             token
         )
         console.log(user)
-        res.cookies('sesion-token',user,{
+        res.cookie('sesion-token',user,{
             httpOnly:false,
             secure:false,
             sameSite:'strict',
             path:'/',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
-        res.status(200).json(response)
+        res.status(200).json('user created')
     } catch (error) {
         res.status(400).json({error:error.message})
     }
