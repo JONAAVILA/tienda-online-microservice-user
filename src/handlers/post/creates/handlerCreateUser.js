@@ -48,7 +48,11 @@ const handleCreateUser = async (id,name,surname,email,password,phone,address,num
     })
     console.log('user:',response)
     if(!response) throw new Error('Error to create')
-    return 'User created'
+    return {
+        id:response.id,
+        name:response.name,
+        surname:response.surname
+    }
 }
 
 export default handleCreateUser
