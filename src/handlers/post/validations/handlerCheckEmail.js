@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import { models } from '../../../db.js';
 import { schema } from '../../../utils/schema.js';
-import createJwt from '../../../utils/createJwt.js';
+import { emailJwt } from '../../../utils/createJwt.js';
 
 const { User } = models;
  
@@ -21,7 +21,7 @@ const handlerCheckEmail = async (email)=>{
         })
         console.log(match)
         if(match != null) throw new Error(false)
-        const token = createJwt(email)
+        const token = emailJwt(email)
         return token
     } catch (error) {
         return error

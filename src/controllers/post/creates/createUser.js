@@ -16,9 +16,9 @@ const createUser = async (req,res)=>{
             state,
             country
         } = req.body
-        const token = req.cookies['access-token']    
+        const token = req.cookies['validate-token']    
 
-        const user = await handleCreateUser(
+        const create = await handleCreateUser(
             id,
             name,
             surname,
@@ -32,22 +32,22 @@ const createUser = async (req,res)=>{
             country,
             token
         )
-        console.log(user)
-        res.cookie('sesion-token',user,{
+
+        res.cookie('sesion-token',create.user,{
             httpOnly:false,
             secure:false,
             sameSite:'strict',
             path:'/',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
-        res.cookie('refresh-token',user,{
+        res.cookie('refresh-token',create.refresToken,{
             httpOnly:true,
             secure:false,
             sameSite:'strict',
             path:'/',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
-        res.cookie('login-token',user,{
+        res.cookie('login-token',create.LoginJwt,{
             httpOnly:true,
             secure:false,
             sameSite:'strict',

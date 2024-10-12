@@ -2,7 +2,7 @@ import handlerSendCode from "../../../handlers/post/creates/code/handlerSendCode
 
 const sendCode = async (req,res)=>{
     try {
-        const token = req.cookies['access-token']
+        const token = req.cookies['validate-token']
         const code = await handlerSendCode(token)
         
         res.status(200).json(code)
