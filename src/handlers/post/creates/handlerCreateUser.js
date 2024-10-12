@@ -67,14 +67,10 @@ const handleCreateUser = async (
         surname:response.surname
     }
     const refresToken = userRefrestJwt(
-        response.id,
-        response.name,
-        response.surname
+        response.id
     )
     const LoginJwt = userLoginJwt(
-        response.id,
-        response.name,
-        response.surname
+        response.email
     )
         
     return {

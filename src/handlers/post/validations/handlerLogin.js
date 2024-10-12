@@ -6,32 +6,41 @@ import jwt from 'jsonwebtoken';
 const { User } = models
 const { SECRET_KEY } = process.env
 
-const handlerLogin = async (password,userName,token)=>{
+const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     try {
-        const decode = jwt.verify({
-            token,
-            SECRET_KEY
-        })
-
-        const email = decode.email
-
-        const { error } = schema.validate({
-            userName:userName,
-            password:password
-        })
-
-        if(error) return false
-        const user = await User.findOne({
-            where:{
-                userName:userName,
-                email:email
-            },
-            attributes:[
-                'password'
-            ]
-        })
-        const passwordCompare = await bcrypt.compare(password,user.password)
-        return passwordCompare
+        if(refreshToken){
+            const refresh = jwt.verify({
+                refreshToken,
+                SECRET_KEY
+            })
+            const login = jwt.verify({
+                loginToken,
+                SECRET_KEY
+            })
+    
+            const { id } = refresh
+            const { email:emailLogin } = login
+            if(emailLogin != email ) throw new Error(false);
+            
+            const { error } = schema.validate({
+                email:email,
+                password:password
+            })
+            if(error) throw new Error(false);
+            
+            const user = await User.findOne({
+                where:{
+                    id:id,
+                    email:email
+                },
+                attributes:[
+                    'password'
+                ]
+            })
+            const passwordCompare = await bcrypt.compare(password,user.password)
+            return passwordCompare
+        }
+        return 'validate user'
     } catch (error) {
         return false
     }
