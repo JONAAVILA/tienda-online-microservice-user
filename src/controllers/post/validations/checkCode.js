@@ -2,7 +2,7 @@ import handleCheckCode from "../../../handlers/post/validations/handleCheckCode.
 
 const checkCode = async (req,res)=>{
     try {
-        const token = req.cookies['access-token']
+        const token = req.cookies['validate-token']
         const { code } = req.body
 
         const check = await handleCheckCode(code,token)
