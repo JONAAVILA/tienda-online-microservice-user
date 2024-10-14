@@ -19,7 +19,7 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
-        console.log('match:',match)
+    
         if(match != null) return {
             token:'',
             access:false
