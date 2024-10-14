@@ -19,7 +19,7 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
-        console.log(match)
+  
         if(match != null) throw new Error(false)
         const token = emailJwt(email)
         return token

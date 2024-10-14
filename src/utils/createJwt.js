@@ -18,11 +18,9 @@ export const emailJwt = (email)=>{
     return token
 }
 
-export const userRefrestJwt = (id,name,surname)=>{
+export const userRefrestJwt = (id)=>{
     const payload = {
         id:id,
-        name:name,
-        surname:surname
     }
 
     const token = jwt.sign(
@@ -35,11 +33,9 @@ export const userRefrestJwt = (id,name,surname)=>{
     return token
 }
 
-export const userLoginJwt = (id,name,surname)=>{
+export const userLoginJwt = (email)=>{
     const payload = {
-        id:id,
-        name:name,
-        surname:surname
+        email:email
     }
 
     const token = jwt.sign(

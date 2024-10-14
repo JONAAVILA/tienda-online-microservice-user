@@ -32,14 +32,6 @@ const createUser = async (req,res)=>{
             country,
             token
         )
-
-        res.cookie('sesion-token',create.user,{
-            httpOnly:false,
-            secure:false,
-            sameSite:'strict',
-            path:'/',
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
         res.cookie('refresh-token',create.refresToken,{
             httpOnly:true,
             secure:false,
