@@ -19,10 +19,16 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
-  
-        if(match != null) throw new Error(false)
+        console.log('match:',match)
+        if(match != null) return {
+            token:'',
+            access:false
+        }
         const token = emailJwt(email)
-        return token
+        return {
+            token:token,
+            access:true
+        }
     } catch (error) {
         return error
     }

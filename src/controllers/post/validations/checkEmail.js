@@ -3,16 +3,16 @@ import handlerCheckEmail from '../../../handlers/post/validations/handlerCheckEm
 const checkEmail = async (req,res) =>{
     try {
         const { email } = req.body
-        const token = await handlerCheckEmail(email)
+        const response = await handlerCheckEmail(email)
 
-        res.cookie('validate-token',token,{
+        res.cookie('validate-token',response['token'],{
             httpOnly:true,
             secure:false,
             sameSite:'strict',
             path:'/',
             maxAge: 6 * 60 * 1000
             })
-        res.status(200).json('access')
+        res.status(200).json(response['access'])
     } catch (error) {
         res.status(400).json({error:error.message})
     }
