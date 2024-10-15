@@ -1,4 +1,5 @@
 import { models } from '../../../db.js';
+import { emailJwt } from '../../../utils/createJwt.js';
 import { schema } from '../../../utils/schema.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
@@ -8,7 +9,7 @@ const { SECRET_KEY } = process.env
 
 const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     try {
-        if(refreshToken){
+        if(refreshToken && loginToken){
             const refresh = jwt.verify(
                 refreshToken,
                 SECRET_KEY
@@ -42,7 +43,11 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
             const passwordCompare = await bcrypt.compare(password,user.password)
             return passwordCompare
         }
-        return 'validate user'
+        const token = emailJwt(email)
+        return {
+            message:'validate user',
+            token
+        }
     } catch (error) {
         return false
     }
