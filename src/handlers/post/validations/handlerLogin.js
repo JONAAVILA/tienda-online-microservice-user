@@ -10,6 +10,7 @@ const { SECRET_KEY } = process.env
 const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     try {
         if(refreshToken && loginToken){
+            console.log('parameters:',refreshToken,loginToken,password,email)
             const refresh = jwt.verify(
                 refreshToken,
                 SECRET_KEY
@@ -21,7 +22,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     
             const { id } = refresh
             const { email:emailLogin } = login
-
+            console.log('tokenparameters:',id,emailLogin)
             if(emailLogin != email ) throw new Error(false);
             
             const { error } = schema.validate({
@@ -41,7 +42,10 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
             })
 
             const passwordCompare = await bcrypt.compare(password,user.password)
-            return passwordCompare
+            return {
+                message:passwordCompare,
+                token:''
+            }
         }
         const token = emailJwt(email)
         return {
