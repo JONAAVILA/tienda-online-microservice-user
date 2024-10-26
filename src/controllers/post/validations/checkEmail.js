@@ -7,7 +7,7 @@ const checkEmail = async (req,res) =>{
 
         res.cookie('validate-token',response['token'],{
             httpOnly:true,
-            secure:false,
+            secure:true,
             sameSite:'strict',
             path:'/',
             maxAge: 6 * 60 * 1000
