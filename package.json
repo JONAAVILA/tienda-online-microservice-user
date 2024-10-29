@@ -8,8 +8,9 @@
     "npm": "20.13.1"
   },
   "scripts": {
-    "server": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
