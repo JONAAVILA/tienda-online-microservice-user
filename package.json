@@ -4,12 +4,10 @@
   "description": "Server Users  of Payture-Backend",
   "main": "index.js",
   "type": "module",
-  "engines": {
-    "node": "20.18.0"
-  },
   "scripts": {
-    "server": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
