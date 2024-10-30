@@ -10,7 +10,7 @@ const login = async (req,res)=>{
         res.cookie('validate-token',access.token,{
             httpOnly:true,
             secure:false,
-            sameSite:'lax',
+            sameSite:'strict',
             path:'/',
             maxAge: 6 * 60 * 1000
         })
