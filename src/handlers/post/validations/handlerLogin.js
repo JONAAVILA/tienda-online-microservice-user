@@ -22,7 +22,6 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     
             const { id } = refresh
             const { email:emailLogin } = login
-            console.log('tokenparameters:',id,emailLogin)
             if(emailLogin != email ) throw new Error(false);
             
             const { error } = schema.validate({
@@ -47,7 +46,17 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                 token:''
             }
         }
+        const emailDb = await User.findOne({
+            where:{
+                email:email
+            },
+            attributes:[
+                'email'
+            ]
+        })
+        if(emailDb != email) throw new Error(false);
         const token = emailJwt(email)
+        
         return {
             message:'validate user',
             token
