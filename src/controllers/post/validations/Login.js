@@ -14,7 +14,7 @@ const login = async (req,res)=>{
             path:'/',
             maxAge: 6 * 60 * 1000
         })
-        res.status(200).json(access.message)
+        res.status(200).json(access['message'])
     } catch (error) {
         res.status(400).json({error:error.message})
     }
