@@ -10,7 +10,6 @@ const { SECRET_KEY } = process.env
 const handlerLogin = async (password,email,loginToken,refreshToken)=>{
     try {
         if(refreshToken && loginToken){
-            console.log('parameters:',refreshToken,loginToken,password,email)
             const refresh = jwt.verify(
                 refreshToken,
                 SECRET_KEY
@@ -46,6 +45,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                 token:''
             }
         }
+
         const emailDb = await User.findOne({
             where:{
                 email:email
@@ -54,7 +54,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                 'email'
             ]
         })
-        if(emailDb != email) throw new Error(false);
+        if(emailDb.email != email) throw new Error(false);
         const token = emailJwt(email)
         
         return {
