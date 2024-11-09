@@ -7,14 +7,14 @@ const login = async (req,res)=>{
         const loginToken = req.cookies['login-token']
 
         const access = await handlerLogin(password,email,loginToken,refreshToken)
-        res.cookie('validate-token',access.token,{
+        res.cookie('validate-token',access['token'],{
             httpOnly:true,
             secure:true,
             sameSite:'none',
             path:'/',
             maxAge: 6 * 60 * 1000
         })
-        res.status(200).json(access.message)
+        res.status(200).json(access['message'])
     } catch (error) {
         res.status(400).json({error:error.message})
     }

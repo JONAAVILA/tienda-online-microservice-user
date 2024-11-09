@@ -59,7 +59,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
         
         return {
             message:'validate user',
-            token
+            token:token
         }
     } catch (error) {
         return false
