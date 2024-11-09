@@ -9,7 +9,7 @@ const login = async (req,res)=>{
         const access = await handlerLogin(password,email,loginToken,refreshToken)
         res.cookie('validate-token',access['token'],{
             httpOnly:true,
-            secure:true,
+            secure:false,
             sameSite:'none',
             path:'/',
             maxAge: 6 * 60 * 1000
