@@ -35,13 +35,25 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                     email:email
                 },
                 attributes:[
+                    'name',
+                    'surname',
+                    'location',
+                    'country',
                     'password'
                 ]
             })
 
             const passwordCompare = await bcrypt.compare(password,user.password)
+
             return {
-                message:passwordCompare,
+                value:passwordCompare ?
+                {
+                    name:user.name,
+                    surname:user.surname,
+                    location:user.location,
+                    country:user.country,
+                }:
+                passwordCompare,
                 token:''
             }
         }
@@ -58,7 +70,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
         const token = emailJwt(email)
         
         return {
-            message:'validate user',
+            value:'validate user',
             token:token
         }
     } catch (error) {
