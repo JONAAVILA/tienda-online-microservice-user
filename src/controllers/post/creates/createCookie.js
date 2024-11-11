@@ -7,15 +7,15 @@ const createCookie = async (req,res)=>{
         const data = await handlerCreateCookie(password,token)
         res.cookie('refresh-token',data.refresh,{
             httpOnly:true,
-            secure:false,
-            sameSite:'strict',
+            secure:true,
+            sameSite:'none',
             path:'/',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         res.cookie('login-token',data.login,{
             httpOnly:true,
-            secure:false,
-            sameSite:'strict',
+            secure:true,
+            sameSite:'none',
             path:'/',
             maxAge: 24 * 60 * 60 * 1000
         })

@@ -17,7 +17,6 @@ const handlerCreateCookie = async (password,token)=>{
         const { error } = schema.validate({
             password:password
         })
-        console.log(error)
         if(error) throw new Error('Password inválido')
             
         const { email } = decode
