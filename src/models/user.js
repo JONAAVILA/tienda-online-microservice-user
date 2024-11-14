@@ -37,6 +37,10 @@ export default (sequelize)=>{
             type:DataTypes.STRING,
             allowNull:false
         },
+        location:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
         state:{
             type:DataTypes.STRING,
             allowNull:false
