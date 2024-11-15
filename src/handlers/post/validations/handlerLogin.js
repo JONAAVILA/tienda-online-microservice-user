@@ -44,7 +44,6 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
             })
 
             const passwordCompare = await bcrypt.compare(password,user.password)
-            console.log('bcrypt', passwordCompare)
             if(!passwordCompare){
                 return{
                     value:false,
