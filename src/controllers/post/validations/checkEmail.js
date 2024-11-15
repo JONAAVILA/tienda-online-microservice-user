@@ -12,7 +12,7 @@ const checkEmail = async (req,res) =>{
             path:'/',
             maxAge: 6 * 60 * 1000
             })
-        res.status(200).json(response['access'])
+        res.status(200).json(response.access)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
