@@ -5,7 +5,7 @@ const checkEmail = async (req,res) =>{
         const { email } = req.body
         const response = await handlerCheckEmail(email)
 
-        res.cookie('validate-token',response['token'],{
+        res.cookie('validate-token',response.token,{
             httpOnly:true,
             secure:true,
             sameSite:'none',
