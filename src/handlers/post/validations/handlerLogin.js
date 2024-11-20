@@ -46,13 +46,13 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
             const passwordCompare = await bcrypt.compare(password,user.password)
             if(!passwordCompare){
                 return{
-                    value:false,
+                    values:false,
                     token:''
                 }
             }
 
             return{
-                value:{
+                values:{
                     name:user.name,
                     surname:user.surname,
                     location:user.location,
@@ -74,7 +74,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
         const token = emailJwt(email)
         
         return {
-            value:'validate user',
+            values:'validate user',
             token:token
         }
     } catch (error) {
