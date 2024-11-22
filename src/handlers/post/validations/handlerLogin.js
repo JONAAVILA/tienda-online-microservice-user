@@ -37,6 +37,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                 attributes:[
                     'name',
                     'surname',
+                    'email',
                     'location',
                     'country',
                     'password'
@@ -55,6 +56,7 @@ const handlerLogin = async (password,email,loginToken,refreshToken)=>{
                 values:{
                     name:user.name,
                     surname:user.surname,
+                    email:user.email,
                     location:user.location,
                     country:user.country,
                 },
