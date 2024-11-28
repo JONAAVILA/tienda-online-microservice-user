@@ -19,6 +19,7 @@ const handlerCheckEmail = async (email)=>{
                 }
             }
         })
+<<<<<<< HEAD
     
         if(match != null) return {
             token:'',
@@ -29,6 +30,10 @@ const handlerCheckEmail = async (email)=>{
             token:token,
             access:true
         }
+=======
+        if(match) throw new Error(false);
+        return true
+>>>>>>> 392acf8e676530f78b8bd869115a203c086a0615
     } catch (error) {
         return error
     }
