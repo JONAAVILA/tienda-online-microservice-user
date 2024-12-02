@@ -9,7 +9,7 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
-  DATABASE_URL
+  POSTGRES_URL_NON_POOLING
 } = process.env
 
 // <-- local -->
@@ -22,9 +22,8 @@ const {
 // <-- produccion -->
 const isProduction = process.env.NODE_ENV === 'production';
 
-const sequelize = new Sequelize(DATABASE_URL, {
-  logging: false, 
-  native: false, 
+const sequelize = new Sequelize(POSTGRES_URL_NON_POOLING, {
+  dialect: 'postgres',
   dialectOptions: isProduction ? {
     ssl: {
       require: true,
