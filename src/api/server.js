@@ -7,11 +7,7 @@ import cookieParser from 'cookie-parser';
 
 const server = express();
 const corsOptions = {
-<<<<<<< HEAD:src/api/server.js
     origin: ['http://localhost:5173','http://localhost:3000', 'https://natural-harmony.vercel.app'],
-=======
-    origin: ['http://localhost:3001','http://localhost:3000', 'https://tienda-online-backend-riqf.onrender.com'],
->>>>>>> 392acf8e676530f78b8bd869115a203c086a0615:src/server.js
     credentials:true,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
