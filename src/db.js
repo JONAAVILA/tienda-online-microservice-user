@@ -20,6 +20,9 @@ const {
 // <-- local -->
 
 // <-- produccion -->
+
+console.log('POSTGRES_URL:', POSTGRES_URL);
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 const sequelize = new Sequelize(POSTGRES_URL, {
