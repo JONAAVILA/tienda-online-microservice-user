@@ -4,9 +4,6 @@
   "description": "Server Users  of Payture-Backend",
   "main": "index.js",
   "type": "module",
-  "engines": {
-    "npm": "10.5.2"
-  },
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js"
@@ -28,7 +25,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "dotenv": "^16.4.5"
   }
 }

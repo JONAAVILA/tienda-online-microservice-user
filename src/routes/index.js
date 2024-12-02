@@ -9,6 +9,7 @@ import createUser from "../controllers/post/creates/createUser.js";
 import checkUsers from "../controllers/post/validations/checkUsers.js";
 import sendCode from "../controllers/post/creates/sendCode.js";
 import checkCode from "../controllers/post/validations/checkCode.js";
+import createCookie from "../controllers/post/creates/createCookie.js";
 
 const router = Router()
 
@@ -17,6 +18,7 @@ const router = Router()
 // router.get('/users/:id',getUserById)
 
 router.post('/login',login)
+router.post('/login/refresh',createCookie)
 router.post('/users/check',checkUsers)
 router.post('/users/check/email',checkEmail)
 router.post('/singin/code',sendCode)

@@ -1,4 +1,4 @@
-import server from './src/server.js';
+import server from './src/api/server.js';
 import { models } from './src/db.js';
 
 const conn = models.conn

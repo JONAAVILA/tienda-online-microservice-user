@@ -1,4 +1,4 @@
-import Joi from "joi"
+import Joi from "joi";
 
 export const schema = Joi.object({
     uuid:Joi.string()
@@ -8,7 +8,7 @@ export const schema = Joi.object({
         .max(30)
         .pattern(new RegExp('^[a-zA-Z .-_]+$')),
     userName:Joi.string()
-        .pattern(new RegExp('^[a-zA-Z .-_!@#\$%\^&\*]+$'))
+        .pattern(new RegExp('^[a-zA-Z .-_]+$'))
         .max(30),
     surname:Joi.string()
         .min(3)
@@ -29,6 +29,16 @@ export const schema = Joi.object({
         .min(3)
         .max(50)
         .pattern(new RegExp('^[a-zA-Z0-9 .]+$')),
+    number:Joi.string()
+        .min(1)
+        .max(6),
+    location:Joi.string()
+        .min(3)
+        .max(50)
+        .pattern(new RegExp('^[a-zA-Z0-9 .]+$')),
+    phone:Joi.string()
+        .min(10)
+        .max(20),
     state:Joi.string()
         .min(3)
         .max(40)
@@ -55,6 +65,9 @@ export const schema = Joi.object({
        'image',
        'email',
        'address',
+       'number',
+       'phone',
+       'location',
        'state',
        'country',
        'tittle',

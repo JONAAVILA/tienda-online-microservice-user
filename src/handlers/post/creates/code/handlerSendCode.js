@@ -9,7 +9,7 @@ const handlerSendCode = async (token)=>{
         const decode = jwt.verify(
             token,
             SECRET_KEY
-        )
+        )   
         const email = decode.email
         
         const { error } = schema.validate({

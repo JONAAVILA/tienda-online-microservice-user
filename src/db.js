@@ -8,13 +8,31 @@ config()
 const {
   DB_USER,
   DB_PASSWORD,
-  DB_HOST
+  DB_HOST,
+  DATABASE_URL
 } = process.env
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/payture-users`, {
+// <-- local -->
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/payture-users`, {
+//   logging: false, 
+//   native: false, 
+// })
+// <-- local -->
+
+// <-- produccion -->
+const isProduction = process.env.NODE_ENV === 'production';
+
+const sequelize = new Sequelize(DATABASE_URL, {
   logging: false, 
   native: false, 
+  dialectOptions: isProduction ? {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    }
+  } : {}
 })
+// <-- produccion -->
 
 const User = userModel(sequelize)
 const Code = codeModel(sequelize)
