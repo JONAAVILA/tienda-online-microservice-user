@@ -28,7 +28,7 @@ const sequelize = new Sequelize(DATABASE_URL, {
   dialectOptions: isProduction ? {
     ssl: {
       require: true,
-      rejectUnauthorized: false,
+      rejectUnauthorized: true,
     }
   } : {}
 })
