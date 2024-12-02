@@ -2,7 +2,7 @@ import server from './src/server.js';
 import { models } from './src/db.js';
 
 const conn = models.conn
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
