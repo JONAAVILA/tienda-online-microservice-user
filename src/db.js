@@ -9,7 +9,7 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
-  DATABASE_URL
+  POSTGRES_URL
 } = process.env
 
 // <-- local -->
@@ -22,7 +22,7 @@ const {
 // <-- produccion -->
 const isProduction = process.env.NODE_ENV === 'production';
 
-const sequelize = new Sequelize(DATABASE_URL, {
+const sequelize = new Sequelize(POSTGRES_URL, {
   logging: false, 
   native: false, 
   dialectOptions: isProduction ? {
