@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 import { Sequelize } from 'sequelize';
 import userModel from './models/user.js';
 import codeModel from './models/code.js';
+import adminModel from './models/admin.js';
 
 config()
 
@@ -35,9 +36,13 @@ const sequelize = new Sequelize(DATABASE_URL, {
 
 const User = userModel(sequelize)
 const Code = codeModel(sequelize)
+const Admin = adminModel(sequelize)
 
 User.hasMany(Code,{foreignKey:'userId'})
 Code.belongsTo(User,{foreignKey:'userId'})
+
+Admin.hasMany(Code,{foreignKey:'adminId'})
+Code.belongsTo(Admin,{foreignKey:'adminId'})
 
 const models = {
   ...sequelize.models,

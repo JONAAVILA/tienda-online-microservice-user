@@ -5,6 +5,7 @@ const createUser = async (req,res)=>{
     try {
         const id = uuidv4()
         const {
+            sellerUser,
             name,
             surname,
             email,
@@ -20,6 +21,7 @@ const createUser = async (req,res)=>{
 
         const create = await handleCreateUser(
             id,
+            sellerUser,
             name,
             surname,
             email,

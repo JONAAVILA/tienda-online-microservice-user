@@ -6,6 +6,10 @@ export default (sequelize)=>{
             type:DataTypes.UUID,
             primaryKey:true
         },
+        sellerUser:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
         name:{
             type:DataTypes.STRING,
             allowNull:false

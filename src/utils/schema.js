@@ -3,6 +3,12 @@ import Joi from "joi";
 export const schema = Joi.object({
     uuid:Joi.string()
         .uuid(),
+    sellerUser:Joi.string()
+        .min(3)
+        .max(50),
+    seller:Joi.string()
+        .min(3)
+        .max(50),
     name:Joi.string()
         .min(3)
         .max(30)

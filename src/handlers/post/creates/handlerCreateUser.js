@@ -10,6 +10,7 @@ const { SECRET_KEY } = process.env
 
 const handleCreateUser = async (
         id,
+        sellerUser,
         name,
         surname,
         email,
@@ -30,6 +31,7 @@ const handleCreateUser = async (
     
     const { error } = schema.validate({
         uuid:id,
+        sellerUser:sellerUser,
         name:name,
         surname:surname,
         email:email,
@@ -47,6 +49,7 @@ const handleCreateUser = async (
 
     const response = await User.create({
         id:id,
+        sellerUser:sellerUser,
         name:name,
         surname:surname,
         email:email,

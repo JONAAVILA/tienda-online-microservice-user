@@ -4,7 +4,6 @@ import { Router } from "express";
 // import getUserByName from '../controllers/get/getUserByName.js';
 import login from '../controllers/post/validations/Login.js';
 import checkEmail from '../controllers/post/validations/checkEmail.js';
-import updateUsers from '../controllers/post/updates/updateUsers.js';
 import createUser from "../controllers/post/creates/createUser.js";
 import checkUsers from "../controllers/post/validations/checkUsers.js";
 import sendCode from "../controllers/post/creates/sendCode.js";
@@ -22,7 +21,6 @@ router.post('/login/refresh',createCookie)
 router.post('/users/check',checkUsers)
 router.post('/users/check/email',checkEmail)
 router.post('/singin/code',sendCode)
-router.post('/users/update',updateUsers)
 router.post('/singin',createUser)
 router.post('/singin/check/code',checkCode)
 
