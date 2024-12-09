@@ -4,7 +4,7 @@ import { models } from './src/db.js';
 const conn = models.conn
 const PORT = process.env.PORT || 10000;
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(PORT, () => {
     console.log(`Server-User listening on port ${PORT}`);
   })
