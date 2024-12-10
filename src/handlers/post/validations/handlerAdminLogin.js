@@ -50,7 +50,6 @@ const handlerAdminLogin = async (seller,email,password,refreshToken,loginToken)=
 
             return {
                 values:{
-                    id:admin.id,
                     seller:admin.seller,
                     name:admin.name,
                     surname:admin.surname
