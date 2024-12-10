@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { userLoginJwt, userRefrestJwt } from '../../../utils/createJwt.js';
 
 const { SECRET_KEY } = process.env
-const { User } = models
+const { User, Admin } = models
 
 const handlerCreateCookie = async (password,token)=>{
     try {
@@ -30,13 +30,27 @@ const handlerCreateCookie = async (password,token)=>{
                 'email'
             ]
         })
+
+        const admin = user && await Admin.findOne({
+            where:{
+                email:email
+            },
+            attributes:[
+                'password',
+                'email',
+                'id'
+            ]
+        })
         
         const passwordCompare = await bcrypt.compare(password,user.password)
         
         if(!passwordCompare) throw new Error('Datos inválidos');
 
-        const refresh = userRefrestJwt(user.id)
-        const login = userLoginJwt(user.email)
+        const id = user.id ? user.id : admin.id
+        const e_mail = user.email ? user.email : admin.email
+
+        const refresh = userRefrestJwt(id)
+        const login = userLoginJwt(e_mail)
 
         return{
             refresh,

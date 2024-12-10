@@ -4,7 +4,9 @@ const createCookie = async (req,res)=>{
     try {
         const token = req.cookies['validate-token']
         const { password } = req.body
+        
         const data = await handlerCreateCookie(password,token)
+
         res.cookie('refresh-token',data.refresh,{
             httpOnly:true,
             secure:true,

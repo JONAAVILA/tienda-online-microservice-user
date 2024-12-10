@@ -57,7 +57,6 @@ const handlerAdminLogin = async (seller,email,password,refreshToken,loginToken)=
                 token:''
             }
         }
-
         const emailDb = await Admin.findOne({
             where:{
                 email:email
@@ -66,6 +65,7 @@ const handlerAdminLogin = async (seller,email,password,refreshToken,loginToken)=
                 'email'
             ]
         })
+
         if(emailDb.email != email) throw new Error(false);
         const token = emailJwt(email)
 
