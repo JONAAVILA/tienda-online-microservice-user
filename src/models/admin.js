@@ -4,9 +4,13 @@ export default (sequelize)=>{
     const Admin = sequelize.define('Admin',{
         id:{
             type:DataTypes.UUID,
-            allowNull:false
+            primaryKey:true
         },
         name:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        surname:{
             type:DataTypes.STRING,
             allowNull:false
         },

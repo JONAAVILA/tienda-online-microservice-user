@@ -9,6 +9,7 @@ import checkUsers from "../controllers/post/validations/checkUsers.js";
 import sendCode from "../controllers/post/creates/sendCode.js";
 import checkCode from "../controllers/post/validations/checkCode.js";
 import createCookie from "../controllers/post/creates/createCookie.js";
+import adminLogin from "../controllers/post/validations/adminLogin.js";
 
 const router = Router()
 
@@ -23,5 +24,6 @@ router.post('/users/check/email',checkEmail)
 router.post('/singin/code',sendCode)
 router.post('/singin',createUser)
 router.post('/singin/check/code',checkCode)
+router.post('/admin',adminLogin)
 
 export default router;

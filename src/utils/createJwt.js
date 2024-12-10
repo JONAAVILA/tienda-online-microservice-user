@@ -18,9 +18,10 @@ export const emailJwt = (email)=>{
     return token
 }
 
-export const userRefrestJwt = (id)=>{
+export const userRefrestJwt = (id,seller)=>{
     const payload = {
         id:id,
+        seller:seller
     }
 
     const token = jwt.sign(
