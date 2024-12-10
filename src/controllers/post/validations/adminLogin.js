@@ -8,7 +8,7 @@ const adminLogin = async (req,res)=>{
 
         const response = await handlerAdminLogin(seller,email,password,refreshToken,loginToken)
         
-        res.cookie('validate-token',access.token,{
+        res.cookie('validate-token',response.token,{
             httpOnly:true,
             secure:true,
             sameSite:'none',
