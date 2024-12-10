@@ -59,7 +59,7 @@ const handlerAdminLogin = async (seller,email,password,refreshToken,loginToken)=
             }
         }
 
-        const emailDb = await User.findOne({
+        const emailDb = await Admin.findOne({
             where:{
                 email:email
             },
