@@ -31,7 +31,7 @@ const handlerCreateCookie = async (password,token)=>{
             ]
         })
 
-        const admin = user && await Admin.findOne({
+        const admin = await Admin.findOne({
             where:{
                 email:email
             },
