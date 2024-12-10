@@ -1,4 +1,4 @@
-import handlerAdminLogin from "../../../handlers/post/validations/handlerAdminLogin"
+import handlerAdminLogin from "../../../handlers/post/validations/handlerAdminLogin.js"
 
 const adminLogin = async (req,res)=>{
     try {
