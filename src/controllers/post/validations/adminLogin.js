@@ -3,21 +3,17 @@ import handlerAdminLogin from "../../../handlers/post/validations/handlerAdminLo
 const adminLogin = async (req,res)=>{
     try {
         const { seller, email, password } = req.body
-        const response = await handlerAdminLogin(seller,email,password)
-
-        res.cookie('refresh-token',response.refresToken,{
+        const refreshToken = req.cookies['refresh-token']
+        const loginToken = req.cookies['login-token']
+        
+        const response = await handlerAdminLogin(seller,email,password,refreshToken,loginToken)
+        
+        res.cookie('validate-token',access.token,{
             httpOnly:true,
-            secure:false,
-            sameSite:'strict',
+            secure:true,
+            sameSite:'none',
             path:'/',
-            maxAge: 7 * 24 * 60 * 60 * 1000
-        })
-        res.cookie('login-token',response.LoginJwt,{
-            httpOnly:true,
-            secure:false,
-            sameSite:'strict',
-            path:'/',
-            maxAge: 24 * 60 * 60 * 1000
+            maxAge: 6 * 60 * 1000
         })
         res.status(200).json(response.user)
     } catch (error) {
