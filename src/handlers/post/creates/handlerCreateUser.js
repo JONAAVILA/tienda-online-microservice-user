@@ -23,7 +23,7 @@ const handleCreateUser = async (
         country,
         token
     )=>{
-    const decode = await jwt.verify(
+    const decode = jwt.verify(
         token,
         SECRET_KEY
     )
@@ -45,41 +45,46 @@ const handleCreateUser = async (
     })
     if(error && error.message) throw new Error(error.message)
 
-    const passwordHashed = await bcrypt.hashSync(password,SALT_ROUNDS)
+    const passwordHashed = bcrypt.hashSync(password,SALT_ROUNDS)
 
-    const response = await User.create({
-        id:id,
-        sellerUser:sellerUser,
-        name:name,
-        surname:surname,
-        email:email,
-        password:passwordHashed,
-        phone:phone,
-        address:address,
-        number:number,
-        location:location,
-        state:state,
-        country:country
+    const [ user, created ] = await User.findOrCreate({
+        where:{
+            email:email,
+            sellerUser:sellerUser
+        },
+        default:{
+            id:id,
+            sellerUser:sellerUser,
+            name:name,
+            surname:surname,
+            email:email,
+            password:passwordHashed,
+            phone:phone,
+            address:address,
+            number:number,
+            location:location,
+            state:state,
+            country:country
+        }
     })
+    if(!created) throw new Error('Error al crear usuario')
 
-    if(!response) throw new Error('Error to create')
-
-    const user = {
-        id:response.id,
-        name:response.name,
-        surname:response.surname
+    const userResponse = {
+        id:user.id,
+        name:user.name,
+        surname:user.surname
     }
     const refresToken = userRefrestJwt(
-        response.id
+        user.id
     )
     const LoginJwt = userLoginJwt(
-        response.email
+        user.email
     )
         
     return {
         refresToken,
         LoginJwt,
-        user
+        userResponse
     }
 }
 

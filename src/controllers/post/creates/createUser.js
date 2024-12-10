@@ -48,7 +48,7 @@ const createUser = async (req,res)=>{
             path:'/',
             maxAge: 24 * 60 * 60 * 1000
         })
-        res.status(200).json('user created')
+        res.status(200).json(create.userResponse)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
