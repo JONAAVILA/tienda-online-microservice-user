@@ -10,6 +10,7 @@ import sendCode from "../controllers/post/creates/sendCode.js";
 import checkCode from "../controllers/post/validations/checkCode.js";
 import createCookie from "../controllers/post/creates/createCookie.js";
 import adminLogin from "../controllers/post/validations/adminLogin.js";
+import createAdmin from "../controllers/post/creates/createAdmin.js";
 
 const router = Router()
 
@@ -18,12 +19,14 @@ const router = Router()
 // router.get('/users/:id',getUserById)
 
 router.post('/login',login)
-router.post('/admin',adminLogin)
 router.post('/login/refresh',createCookie)
 router.post('/users/check',checkUsers)
 router.post('/users/check/email',checkEmail)
 router.post('/singin/code',sendCode)
 router.post('/singin',createUser)
 router.post('/singin/check/code',checkCode)
+
+router.post('/admin',adminLogin)
+router.post('/admin/signin',createAdmin)
 
 export default router;
