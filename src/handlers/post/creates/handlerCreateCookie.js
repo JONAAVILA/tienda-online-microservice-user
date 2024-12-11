@@ -41,9 +41,10 @@ const handlerCreateCookie = async (password,token)=>{
                 'id'
             ]
         })
-        const id = user.id ? user.id : admin.id
-        const e_mail = user.email ? user.email : admin.email
-        const passwordNew = user.password ? user.password : admin.password
+
+        const id = user ? user.id : admin.id
+        const e_mail = user ? user.email : admin.email
+        const passwordNew = user ? user.password : admin.password
         
         const passwordCompare = await bcrypt.compare(password,passwordNew)
         
