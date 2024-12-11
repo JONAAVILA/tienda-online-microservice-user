@@ -1,4 +1,4 @@
-import handlerCreateAdmin from "../../../handlers/post/creates/handlerCreateAdmin"
+import handlerCreateAdmin from "../../../handlers/post/creates/handlerCreateAdmin.js"
 
 const createAdmin = async (req,res)=>{
     try {
