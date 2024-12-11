@@ -1,6 +1,6 @@
 import { models } from '../../../db.js'
 import { userLoginJwt, userRefrestJwt } from '../../../utils/createJwt.js';
-import schema from '../../../utils/schema.js';
+import { schema } from '../../../utils/schema.js';
 import bcrypt from 'bcrypt'
 
 const { Admin } = models
