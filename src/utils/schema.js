@@ -65,6 +65,8 @@ export const schema = Joi.object({
 }).or( 
        'uuid',
        'name',
+       'sellerUser',
+       'seller',
        'userName',
        'surname',
        'password',
