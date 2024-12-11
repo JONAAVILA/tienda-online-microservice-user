@@ -48,7 +48,7 @@ const handlerCreateCookie = async (password,token)=>{
         
         const passwordCompare = await bcrypt.compare(password,passwordNew)
         
-        if(!passwordCompare) throw new Error('Datos inválidos');
+        if(!passwordCompare) throw new Error(passwordCompare);
 
         const refresh = userRefrestJwt(id)
         const login = userLoginJwt(e_mail)
