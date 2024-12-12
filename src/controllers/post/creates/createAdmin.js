@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import handlerCreateAdmin from "../../../handlers/post/creates/handlerCreateAdmin.js"
 
 const createAdmin = async (req,res)=>{
@@ -9,7 +10,8 @@ const createAdmin = async (req,res)=>{
             email,
             password
         } = req.body
-        const create = await handlerCreateAdmin(name,surname,seller,email,password)
+        const id = uuidv4()
+        const create = await handlerCreateAdmin(id,name,surname,seller,email,password)
 
         res.cookie('refresh-token',create.refresToken,{
             httpOnly:true,

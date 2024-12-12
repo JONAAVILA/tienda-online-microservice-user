@@ -6,8 +6,9 @@ import bcrypt from 'bcrypt'
 const { Admin } = models
 const SALT_ROUNDS = Number(process.env)
 
-const handlerCreateAdmin = async (name,surname,seller,email,password)=>{
+const handlerCreateAdmin = async (id,name,surname,seller,email,password)=>{
     const { error } = schema.validate({
+        uuid:id,
         name:name,
         surname:surname,
         seller:seller,
@@ -24,6 +25,7 @@ const handlerCreateAdmin = async (name,surname,seller,email,password)=>{
             email:email
         },
         defaults:{
+            id:id,
             name:name,
             surname:surname,
             seller:seller,
