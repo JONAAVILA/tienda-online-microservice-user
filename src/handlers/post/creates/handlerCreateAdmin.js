@@ -4,7 +4,7 @@ import { schema } from '../../../utils/schema.js';
 import bcrypt from 'bcrypt'
 
 const { Admin } = models
-const { SALT_ROUNDS } = process.env
+const SALT_ROUNDS = Number(process.env)
 
 const handlerCreateAdmin = async (name,surname,seller,email,password)=>{
     const { error } = schema.validate({
