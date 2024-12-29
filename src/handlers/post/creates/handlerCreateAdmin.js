@@ -39,7 +39,8 @@ const handlerCreateAdmin = async (id,name,surname,seller,email,password)=>{
         const adminResponse = {
             id:admin.id,
             name:admin.name,
-            surname:admin.surname
+            surname:admin.surname,
+            seller:admin.seller
         }
     
         const refresToken = userRefrestJwt(
