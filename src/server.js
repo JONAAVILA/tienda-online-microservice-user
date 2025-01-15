@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 const server = express();
 const corsOptions = {
-    origin: ['http://localhost:5173','http://localhost:3000', 'https://natural-harmony.vercel.app'],
+    origin: ['http://localhost:5173','http://localhost:3000','http://localhost:4321','https://natural-harmony.vercel.app'],
     credentials:true,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
